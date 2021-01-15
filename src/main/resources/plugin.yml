@@ -1,0 +1,7 @@
+name: WBank
+version: ${project.version}
+main: com.rededark.wbank.WBank
+depend:
+  - PowerNBT
+author: Wizard
+

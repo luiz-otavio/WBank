@@ -1,0 +1,22 @@
+Boosters:
+  Default:
+    ID: 1
+
+    Name: '§cBooster de §fAno §cNovo!'
+    Type: 'Porcentagem' #Somar, Porcentagem & Multiplicar.
+    Amount: 50
+
+    Icon:
+      Name: '§eBooster: §fAno §cNovo!'
+
+      Lore:
+        - ' '
+        - ' §7Com esse boost você'
+        - ' §7Aumenta suas quantias de TP!'
+        - ' §7Com um aumento de 50%!'
+        - ' '
+        -
+      Texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzNiYTlhOTQ4ZWYxMjVhYWZkYjZiYzkxYmU2YzgwNGQ3MWFlZTE2NGJhMjE5N2IwYjIyNWE4NDdmZmYwNDhjMCJ9fX0='
+
+      Type: '397:3'
+      Amount: 1

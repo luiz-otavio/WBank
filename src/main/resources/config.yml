@@ -1,0 +1,34 @@
+Lockdown: false
+
+onMax: '§c§lERRO! §cSua quantia de training points é maior que 2 bilhões!'
+onPermission: '§c§lERRO! §cEsse comando não está habilitado para seu cargo.'
+onMetadata: '§c§lERRO! §cSua sessão ainda está ativa!'
+onOperation: '§a§lBANCO: §aSua requisição foi enviada.'
+onComplete: '§a§lBANCO: §aSua requisição foi executada com sucesso.'
+
+Query:
+  Aumento: '§a§lBANCO: §fSeu armazem recebeu um aumento.'
+  Prejuizo: '§a§lBANCO: §cSeu armazem recebeu um prejuizo.'
+  Receber: '§a§lBANCO: §fSeu armazem foi coletado.'
+  Alteração: '§a§lBANCO: §fSeu armazem recebeu uma atualização.'
+  Pagamento: '§a§lBANCO: §fVocê recebeu um pagamento.'
+
+onDeslockdown:
+  - ' '
+  - ' §a§lINFO! §aO sistema bancario está ativo.'
+  - ' §aAgradecemos pela espera.'
+  - ' '
+
+onLockdown:
+  - ' '
+  - ' §c§lAVISO! §cO sistema de bancario está desativado!'
+  - ' §cAguarde o sistema ser ativado novamente.'
+  - ' '
+
+Container:
+  Fill:
+    Name: '§6!'
+
+    Type: '160:1'
+
+    Amount: 1
