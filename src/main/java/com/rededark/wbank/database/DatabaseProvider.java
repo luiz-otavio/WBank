@@ -21,8 +21,6 @@ public class DatabaseProvider {
             Class.forName("org.sqlite.JDBC");
 
             connection = DriverManager.getConnection(address);
-
-            statement = connection.createStatement();
         } catch (Exception exception) {
             exception.printStackTrace();
         } finally {
@@ -35,7 +33,11 @@ public class DatabaseProvider {
     public void update(String query) {
         FORK_JOIN_POOL.execute(() -> {
             try {
+                statement = connection.createStatement();
+
                 statement.executeUpdate(query);
+
+                statement.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -45,10 +47,12 @@ public class DatabaseProvider {
     public ResultSet query(String target) {
         return FORK_JOIN_POOL.submit(() -> {
             try {
-                return statement.executeQuery(target);
+                return (statement = connection.createStatement()).executeQuery(target);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
-            }; return null;
+            }
+
+            return null;
         }).join();
     }
 
