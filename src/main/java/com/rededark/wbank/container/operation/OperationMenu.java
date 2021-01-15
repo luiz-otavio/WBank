@@ -45,7 +45,9 @@ public class OperationMenu extends BankMenu {
                             .build())
                     .handle((icon, event) -> player.playSound(player.getLocation(), Sound.VILLAGER_NO, 0.5F, 0.1F))
                     .build(this); return;
-        }; int index = 0;
+        }
+
+        int index = 0;
 
         for (Operation operation : paginator.getPage(page)) {
             final OperationType operationType = operation.getType();

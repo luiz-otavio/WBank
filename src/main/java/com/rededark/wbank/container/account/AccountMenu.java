@@ -41,7 +41,9 @@ public class AccountMenu extends BankMenu {
             info.add(" §cSeu armazem está vázio para converter!");
         } else {
             info.add(" §7Armazem: $" + String.format("%,.2f", account.getAmount()));
-        }; info.add(" ");
+        }
+
+        info.add(" ");
 
 
         Icon.of(21)
@@ -98,12 +100,16 @@ public class AccountMenu extends BankMenu {
                     player.closeInventory();
 
                     if(account.isFull()) {
-                        player.sendMessage("§c§lERRO! §cVocê já atingiu seu limite!"); return;
+                        player.sendMessage("§c§lERRO! §cVocê já atingiu seu limite!");
+                        return;
                     }
 
                     if(player.hasMetadata("Collect")) {
-                        player.sendMessage(TextAdapter.accept("onMetadata", player)); return;
-                    }; player.setMetadata("Collect", new FixedMetadataValue(WBank.getInstance(), account));
+                        player.sendMessage(TextAdapter.accept("onMetadata", player));
+                        return;
+                    }
+
+                    player.setMetadata("Collect", new FixedMetadataValue(WBank.getInstance(), account));
 
                     player.sendMessage(new String[] {
                             " ",

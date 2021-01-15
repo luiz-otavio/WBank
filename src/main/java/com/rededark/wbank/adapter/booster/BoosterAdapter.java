@@ -14,7 +14,6 @@ public class BoosterAdapter {
         final String name = section.getString("Name");
 
         final ItemStack itemStack = ItemAdapter.toItem(section.getConfigurationSection("Icon"));
-
         final BoosterType boosterType = BoosterType.from(section.getString("Type"));
 
         if(boosterType == null) return null;
@@ -27,7 +26,9 @@ public class BoosterAdapter {
                     return current * amount;
                 case SUM:
                     return current + amount;
-            }; return current;
+            }
+
+            return current;
         }), itemStack, boosterType);
     }
 

@@ -50,31 +50,38 @@ public class Operation {
         private boolean place = false;
 
         public Builder receiver(UUID account) {
-            this.receiver = account; return this;
+            this.receiver = account;
+            return this;
         }
 
         public Builder user(UUID account) {
-            this.user = account; return this;
+            this.user = account;
+            return this;
         }
 
         public Builder type(OperationType type) {
-            this.operationType = type; return this;
+            this.operationType = type;
+            return this;
         }
 
         public Builder amount(float amount) {
-            this.amount = amount; return this;
+            this.amount = amount;
+            return this;
         }
 
         public Builder instant(Instant instant) {
-            this.instant = instant; return this;
+            this.instant = instant;
+            return this;
         }
 
         public Builder id(long id) {
-            this.id = id; return this;
+            this.id = id;
+            return this;
         }
 
         public Builder isPlaced(boolean place) {
-            this.place = place; return this;
+            this.place = place;
+            return this;
         }
 
         public Operation to() {

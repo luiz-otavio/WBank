@@ -68,6 +68,7 @@ public class BankCommand extends Command {
                         " §a/bank lockdown <true/false>",
                         " "
                 });
+
                 return true;
             }
 
@@ -87,7 +88,9 @@ public class BankCommand extends Command {
 
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendMessage(message);
-                }; return true;
+                }
+
+                return true;
             }
 
             if (args.length == 3) {
@@ -109,7 +112,9 @@ public class BankCommand extends Command {
                     if (target.getUniqueId().compareTo(player.getUniqueId()) == 0) {
                         player.sendMessage("§c§lERRO! §cEsse jogador não pode ser você!");
                         return false;
-                    }; final Account account = bankManager.searchBy(Account.class, player.getUniqueId());
+                    }
+
+                    final Account account = bankManager.searchBy(Account.class, player.getUniqueId());
 
                     if (account.getAmount() < number) {
                         player.sendMessage("§c§lERRO! §cEssa quantia é muito superior à seu valor no armazem.");
@@ -160,7 +165,9 @@ public class BankCommand extends Command {
                     sender.sendMessage(TextAdapter.accept("onOperation", null));
 
                     return true;
-                }; final Player player = Bukkit.getPlayerExact(args[1]);
+                }
+
+                final Player player = Bukkit.getPlayerExact(args[1]);
 
                 if (player == null) {
                     sender.sendMessage("§c§lERRO! §cEsse jogador não existe.");
@@ -194,10 +201,9 @@ public class BankCommand extends Command {
                 sender.sendMessage(new String[]{
                         " ",
                         " §a/booster fill <Name>",
-                        " §a/booster add <Name|All> <ID>",
-                        " §a/booster remove <Name|All> <ID>",
                         " "
                 });
+
                 return true;
             }
 
@@ -206,7 +212,9 @@ public class BankCommand extends Command {
 
                 if (player == null) {
                     sender.sendMessage("§c§lERRO! §cNão existe um jogador com esse nome!"); return false;
-                }; final Account account = bankManager.searchBy(Account.class, player.getUniqueId());
+                }
+
+                final Account account = bankManager.searchBy(Account.class, player.getUniqueId());
 
                 sender.sendMessage(" ");
 
@@ -214,7 +222,9 @@ public class BankCommand extends Command {
 
                 for (Booster booster : account.getBoosters()) {
                     sender.sendMessage("  * " + booster.getName());
-                }; sender.sendMessage(" ");
+                }
+
+                sender.sendMessage(" ");
 
                 return true;
             }
@@ -250,7 +260,11 @@ public class BankCommand extends Command {
 
                     new OperationMenu(account, player, new Paginator<>(21, account.getOperations()), 0, true).open(reader);
                 }
-            }; return true;
-        }; return false;
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }

@@ -72,7 +72,9 @@ public class BankDAO {
             }
         } catch (Exception exception) {
             exception.printStackTrace();
-        }; return operations;
+        }
+
+        return operations;
     }
 
     public void put(Account account) {

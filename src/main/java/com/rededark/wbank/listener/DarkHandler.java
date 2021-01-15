@@ -70,16 +70,25 @@ public class DarkHandler implements Listener {
 
                 for (Booster booster : receiver.getBoosters()) {
                     amount = booster.setBooster(player, amount);
-                }; new AccountUpdateAmountEvent(receiver, operation, receiver.getAmount() + amount).call(); break;
+                }
+
+                new AccountUpdateAmountEvent(receiver, operation, receiver.getAmount() + amount).call();
+                break;
             case DECREMENT:
-                new AccountUpdateAmountEvent(receiver, operation, receiver.getAmount() - amount).call(); break;
+                new AccountUpdateAmountEvent(receiver, operation, receiver.getAmount() - amount).call();
+                break;
             case UPDATE:
-                new AccountUpdateAmountEvent(receiver, operation, amount).call(); break;
+                new AccountUpdateAmountEvent(receiver, operation, amount).call();
+                break;
             case COLLECT:
-                new AccountAttachAmountEvent(receiver, operation, amount).call(); break;
+                new AccountAttachAmountEvent(receiver, operation, amount).call();
+                break;
             default:
-                new AccountUpdateLimitEvent(receiver, type, (int) amount).call(); break;
-        }; if(user == null) return;
+                new AccountUpdateLimitEvent(receiver, type, (int) amount).call();
+                break;
+        };
+
+        if(user == null) return;
 
         final Player player = user.getPlayer();
 
@@ -95,11 +104,14 @@ public class DarkHandler implements Listener {
 
         switch (event.getType()) {
             case INCREMENT_LIMIT:
-                account.setLimit(account.getLimit() + limit); break;
+                account.setLimit(account.getLimit() + limit);
+                break;
             case DECREMENT_LIMIT:
-                account.setLimit(account.getLimit() - limit); break;
+                account.setLimit(account.getLimit() - limit);
+                break;
             case UPDATE_LIMIT:
-                account.setLimit(limit); break;
+                account.setLimit(limit);
+                break;
         }
     }
 
@@ -139,17 +151,17 @@ public class DarkHandler implements Listener {
 
         if(current >= 1000000000) {
             player.sendMessage(TextAdapter.accept("onMax", player)); return;
-        }; final int base = (int) (current + Math.ceil(amount));
+        }
+
+        final int base = (int) (current + Math.ceil(amount));
 
         if(base > 1000000000) amount += 1000000000 - base;
 
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jrmctp " + Math.toIntExact((long) amount) + " " + player.getName());
-
         account.setAmount(account.getAmount() - amount);
-
         account.setCurrent((int) (account.getCurrent() + amount));
 
         player.sendMessage(TextAdapter.accept("Query.Collect", player));
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "jrmctp " + Math.toIntExact((long) amount) + " " + player.getName());
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -184,7 +196,9 @@ public class DarkHandler implements Listener {
 
         if (!NumberUtils.isNumber(message)) {
             player.sendMessage("§c§lERRO! §cIsso não é um número."); return;
-        }; final float number = Float.parseFloat(message);
+        }
+
+        final float number = Float.parseFloat(message);
 
         final Account account = bankManager.searchBy(Account.class, player.getUniqueId());
 
@@ -197,7 +211,9 @@ public class DarkHandler implements Listener {
 
         if (number > account.getAmount()) {
             player.sendMessage("§c§lERRO! §cEssa quantinha é superior à seu valor no armazem."); return;
-        }; player.removeMetadata("Collect", plugin);
+        }
+
+        player.removeMetadata("Collect", plugin);
 
         final Operation operation = Operation.of()
                 .amount(number)

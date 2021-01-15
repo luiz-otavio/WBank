@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 public class Account {
 
     private static final BankManager BANK_MANAGER = BankManager.getInstance();
-    private static final ExecutorService SERVICE = Executors.newFixedThreadPool(3);
+    private static final ExecutorService SERVICE = Executors.newSingleThreadExecutor();
 
     private final UUID uuid;
 
@@ -67,7 +67,9 @@ public class Account {
 
             for (Operation operation : BANK_MANAGER.fill(Operation.class)) {
                 if(operation.isAncestor(uuid)) operations = ArrayUtils.add(operations, operation);
-            }; return operations;
+            }
+
+            return operations;
         }, SERVICE).join();
     }
 
@@ -79,7 +81,9 @@ public class Account {
 
             for (Booster booster : BANK_MANAGER.fill(Booster.class)) {
                 if(booster.hasPermission(current)) boosters = ArrayUtils.add(boosters, booster);
-            }; return boosters;
+            }
+
+            return boosters;
         }, SERVICE).join();
     }
 

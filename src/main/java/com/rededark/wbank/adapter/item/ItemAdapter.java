@@ -34,7 +34,7 @@ public class ItemAdapter {
 
             return append(section, new ItemBuilder(Material.getMaterial(id), amount, data));
         }
-        ;
+
         return append(section, new ItemBuilder(Material.getMaterial(Integer.parseInt(type)), amount));
     }
 
@@ -51,6 +51,8 @@ public class ItemAdapter {
 
                 builder.enchant(enchantment, level);
             }
-        }; return builder.build();
+        }
+
+        return builder.build();
     }
 }
